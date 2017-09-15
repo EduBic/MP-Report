@@ -1,0 +1,28 @@
+
+\section{Future Works}
+
+Despite of the great amount of operation that user could do with Sweetie, there are others that we were not able to implement in this version, they are:
+
+\begin{itemize}
+	\item Support to other language, in this version the app is in english but the library string get the language set in the system;
+	\item The social sharing buttons for make Sweetie less close with user contents;
+	\item Build a more robustness notification service, in this version when user kills the application also the service is killed. For do that we will need to run the service into another process;
+	\item A local cache system and compress system for images, this is a serious lack because decrease a lot of our  app usability, fortunately Glide reduce this lack but it cache the images only if user previously open them the result is a long wait for the user on the first opening of an image. Over it we need also a compression image library in order to increase the usability and to decrease the use of network connection;
+	\item Finally we need to mentions security that will become necessary if the app in the future it will be commercialize through the Google Play Store. In this version the app does not use any type of cryptography for the messages and file uploaded into server neither Firebase database do all the checks that a back-end should do.
+\end{itemize}
+
+Working on the project new ideas were born, we describe here the most interesting:
+
+\begin{itemize}
+	\item Manage the Geogift discovery with a more smarter way in order to reduce the use of battery and the useless use of localization sensors. For example, the monitoring service should be activated only in proximity of geofence. Improve the experience allowing the sending of Geogifts only in the current physical location and not on remote. Same for the discovering, limited by an expiration time and a distinction between walk and car movements;
+	
+	\item Import the messages from WhatsApp in order to reduce the barrier of usage from new users;
+	
+	\item A machine learning engine will learn user actions, in particular which items are bookmarked and saved to diary. Thanks to profiling and user-user matching, the learning could be suggest what elements may be of interest, especially to early adopters on their imported messages;
+	
+	\item The diary feature that, for us, is still immature and future extensions could bring something more useful for Sweetie’s users. In the future we could implement that every features contributes to filling the diary. User can save the most important (emotionally tied) objects present in the home’s actions like individual messages and photos. The result will be a kind of story that grows in time;
+	
+	\item Handle the breaking of couples is crucial for maintain active users on the app. One idea is to change main theme of app (different palette colors for example) for an emotional detachment from the relationship just lost, and encourage users to use some dedicated features awaiting a new love story.
+\end{itemize}
+
+
