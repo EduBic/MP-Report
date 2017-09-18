@@ -4,10 +4,10 @@
 
 \subsection{ViewPager with fragment}
 The implementation of a ViewPager with a FragmentPagerAdapter for the tab layout in the dashboard of app lead to many problems for managing the lifecycle of the three fragment Diary, Home and Map with the main lifecycle of Dashboard activity.
-In some cases we were obligated to use workaround with dirty flag [] and break the division set by the architecture.
+In some cases we were obligated to use workaround with dirty flag \cite{DirtyFlagh} and break the division set by the architecture.
 
 \subsection{RecyclerView}
-Managed the hierarchies of ViewHolder was a pain, the RecyclerView impose to developer to avoid polymorphism in the creation of ViewHolder and encourage the use of a switch statement with a check on the type represented by an int value, see onCreateViewHolder on android doc []. Fortunately this limitation is only in the creation phase of a ViewHolder, in the binding phase we use the power of polymorphism. Despite of this fact, the RecyclerView, unlike the ListView, give us a more simple flow and an easy managing of the items into the list.
+Managed the hierarchies of ViewHolder was a pain, the RecyclerView impose to developer to avoid polymorphism in the creation of ViewHolder and encourage the use of a switch statement with a check on the type represented by an int value, see onCreateViewHolder on android doc \cite{RecyclerView_Adapter}. Fortunately this limitation is only in the creation phase of a ViewHolder, in the binding phase we use the power of polymorphism. Despite of this fact, the RecyclerView, unlike the ListView, give us a more simple flow and an easy managing of the items into the list.
 
 \subsection{Images}
 Use image in an Android app and at the same time maintain the usability of it is an very hard task. The Glide library helps us a lot in the download but not in the upload. Firebase API for the upload of files are minimal. The main problems here are:
@@ -17,6 +17,5 @@ Use image in an Android app and at the same time maintain the usability of it is
 \end{itemize}
 
 \subsection{Chat keyboard}
-As Hackborn said \cite{Dianne_Hackborn_keyboard} the Android SDK doesn't expected that a developer needs to know when soft keyboard is open, unfortunately this is not the case. In order to create a custom emoticons keyboard interchangeable with soft keyboard we need this information. So we built a workaround and implement a listener that it is triggered when the GlobalLayout object change height, from that we calculate the height of the soft keyboard. In the layout we put a FrameLayout placeholder that use this calculated height for push up the chat items and give space to the custom emoticons keyboard and soft keyboard, in this way the switch between keyboards is pleasant.
-
-% add the bug of first opening
+As Hackborn said \cite{Dianne_Hackborn_keyboard} the Android SDK doesn't expected that a developer needs to know when soft keyboard is open, unfortunately this is not the case. In order to create a custom emoticons keyboard interchangeable with soft keyboard we need this information. So we built a workaround and implement a listener that it is triggered when the GlobalLayout object change height, from that we calculate the height of the soft keyboard. In the layout we put a FrameLayout placeholder that use this calculated height for push up the chat items and give space to the custom emoticons keyboard and soft keyboard, in this way the switch between keyboards is pleasant. 
+We have not be able to resolve a bug in the first opening of keyboard, that is the moment where app registers the height of soft keyboard, in this case the window resize is not executed correctly: the toolbar disappears as long as the keyboard remains open.
