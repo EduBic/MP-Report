@@ -1,5 +1,6 @@
 
 \section{Main issues}
+\label{sec:issues} 
 
 \subsection{ViewPager with fragment}
 The implementation of a ViewPager with a FragmentPagerAdapter for the tab layout in the dashboard of app lead to many problems for managing the lifecycle of the three fragment Diary, Home and Map with the main lifecycle of Dashboard activity.
@@ -12,10 +13,10 @@ Managed the hierarchies of ViewHolder was a pain, the RecyclerView impose to dev
 Use image in an Android app and at the same time maintain the usability of it is an very hard task. The Glide library helps us a lot in the download but not in the upload. Firebase API for the upload of files are minimal. The main problems here are:
 \begin{itemize}
 	\item Upload image and maintain the status progress after Activity is destroyed: we resolve it by change the status of the object into remote server so it persist over the life of the activity, so the both partners see the upload progress;
-	\item Reduce the images download time: we don’t implement a compression library into the application but it is necessary for have good usability like WhatsApp, at this moment the first opening of an image it is damn slow.
+	\item Reduce the images download time: we don't implement a compression library into the application but it is necessary for have good usability like WhatsApp, at this moment the first opening of an image it is damn slow.
 \end{itemize}
 
 \subsection{Chat keyboard}
-As Hackborn said [] the Android SDK doesn’t expected that a developer needs to know when soft keyboard is open, unfortunately this is not the case. In order to create a custom emoticons keyboard interchangeable with soft keyboard we need this information. So we built a workaround and implement a listener that it is triggered when the GlobalLayout object change height, from that we calculate the height of the soft keyboard. In the layout we put a FrameLayout placeholder that use this calculated height for push up the chat items and give space to the custom emoticons keyboard and soft keyboard, in this way the switch between keyboards is pleasant.
+As Hackborn said \cite{Dianne_Hackborn_keyboard} the Android SDK doesn't expected that a developer needs to know when soft keyboard is open, unfortunately this is not the case. In order to create a custom emoticons keyboard interchangeable with soft keyboard we need this information. So we built a workaround and implement a listener that it is triggered when the GlobalLayout object change height, from that we calculate the height of the soft keyboard. In the layout we put a FrameLayout placeholder that use this calculated height for push up the chat items and give space to the custom emoticons keyboard and soft keyboard, in this way the switch between keyboards is pleasant.
 
 % add the bug of first opening

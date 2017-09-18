@@ -4,11 +4,11 @@
 
 Sweetie could be a long terms project with new extensions in the future so we concentrate a lot of effort to take and maintain a certain architecture in order to keep maintainability and extendability of the app.
 
-Today in the Android community Model View Presenter architecture pattern is the major suggest architecture pattern although the MVP is not a complete architecture pattern as Uncle Bob said in numerous of his talks [].  By the way we would like to clarify that the official Android designer Dianne Hackborn [] doesn’t give a precise architecture, Android components by design could be use in very different architecture styles.
+Today in the Android community Model View Presenter architecture pattern is the major suggest architecture pattern although the MVP is not a complete architecture pattern as Uncle Bob said in numerous of his talks [].  By the way we would like to clarify that the official Android designer Dianne Hackborn \cite{Dianne_Hackborn_android_arch} doesn't give a precise architecture, Android components by design could be use in very different architecture styles.
 
 In fact the MVP in Android is an element of the Clean Architecture explained very well by his inventor Uncle Bob []. You could see this from the many examples grouped by android community in Android MVP blueprint repository []. We study this example and starts with a simple triad defining by a contract (an interface) of components that are:
 View Presenter and Controller
-An important aspect is that the View is identified by a Fragment class, next the reference to View meaning the architecture View that is a Fragment, while the presenter is a middle class that keeps independent the Fragment from the model layer of our application. In the Controller we keep all the logic of data and database query, in many architecture the name Controller are substituted with Repository or Service. We don’t use Service for not have confusing about the Service component of Android and we don’t use Repository word because it means that encapsulated some database logic, in our app the database logic is all into Firebase API so “repository” was not valued as a good name choice. 
+An important aspect is that the View is identified by a Fragment class, next the reference to View meaning the architecture View that is a Fragment, while the presenter is a middle class that keeps independent the Fragment from the model layer of our application. In the Controller we keep all the logic of data and database query, in many architecture the name Controller are substituted with Repository or Service. We don't use Service for not have confusing about the Service component of Android and we don't use Repository word because it means that encapsulated some database logic, in our app the database logic is all into Firebase API so ``repository'' was not valued as a good name choice. 
 
 The activity act like a management of the triad of components of our architecture.
 Its responsibility is of instantiate the triad and managed the life cycle of it, in particular when the life cycle go into Destroy or Stop status it must detach the listeners from firebase database in order to avoid memory leak. Because the role of activities is similar, in order to reduce duplicate codes, almost all activity extend a BaseActivity that implements checks and other common functions. Only the LoginActivity doe not extend BaseActivity.
@@ -19,10 +19,12 @@ For every feature showed in the introduction with the exception of Geogift the a
 
 The communication between components of our architecture are always direct calls to method from upper layer (the widget views) and callbacks from lower layer (Controller or android Service) to upper layer except between Views and Presenter.
 
-The communication between Views and Presenter are done through interfaces as the figure () show. PresenterImp extends Presenter interface that are the reference with which ViewImp communicate, ViewImp extends View interface that are the reference with which PresenterImp communicate.
+The communication between Views and Presenter are done through interfaces as the figure~\ref{fig:MVP_image} show. PresenterImp extends Presenter interface that are the reference with which ViewImp communicate, ViewImp extends View interface that are the reference with which PresenterImp communicate.
 
 \begin{figure}[h]
 	\includegraphics[width=0.5\textwidth, trim={7cm, 7cm, 11cm, 7cm}]{mvp}
+	\caption{MVP interface}
+	\label{fig:MVP_image}
 \end{figure}
 
 The main packages identified a feature of the application and they contain the triad and other utility classes of the feature, for example a DialogFragment.
