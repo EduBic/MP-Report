@@ -17,3 +17,5 @@ Use image in an Android app and at the same time maintain the usability of it is
 
 \subsection{Chat keyboard}
 As Hackborn said [] the Android SDK doesn’t expected that a developer needs to know when soft keyboard is open, unfortunately this is not the case. In order to create a custom emoticons keyboard interchangeable with soft keyboard we need this information. So we built a workaround and implement a listener that it is triggered when the GlobalLayout object change height, from that we calculate the height of the soft keyboard. In the layout we put a FrameLayout placeholder that use this calculated height for push up the chat items and give space to the custom emoticons keyboard and soft keyboard, in this way the switch between keyboards is pleasant.
+
+% add the bug of first opening
